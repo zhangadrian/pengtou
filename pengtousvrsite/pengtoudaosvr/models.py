@@ -12,6 +12,14 @@ class user(models.Model):
     update_time = models.DateTimeField(auto_now=True)
     hobby = models.CharField(max_length=255)
 
+    openid = models.CharField(max_length=100, blank=True)
+    session_id = models.CharField(max_length=100, blank=True)
+    code = models.CharField(max_length=100, blank=True)
+
+    def __str_(self):
+        return self.openid
+    
+
 class party(models.Model):
     party_id = models.AutoField(primary_key=True)
     create_time = models.DateTimeField(auto_now_add=True)
@@ -22,9 +30,16 @@ class party(models.Model):
     pro_num = models.IntegerField(default=0)
     con_num = models.IntegerField(default=0)
 
+    def __str__(self):
+        return party_id
+    
+
 class user_party(models.Model):
     uin = models.IntegerField(default=0)
     party_id = models.IntegerField(default=0)
+    
+    def __str__(self):
+        return str(uin) + '_' + str(party_id)
 
 class poi(models.Model):
     poi_id = models.IntegerField(default=0)
@@ -36,4 +51,7 @@ class poi(models.Model):
     price = models.FloatField()
     name = models.CharField(max_length=255)
     special = models.TextField()
+
+    def __str__(self):
+        return poi_id
 
