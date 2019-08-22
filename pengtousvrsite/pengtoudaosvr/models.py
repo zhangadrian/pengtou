@@ -11,6 +11,7 @@ class user(models.Model):
     join_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
     hobby = models.CharField(max_length=255)
+    sex = models.CharField(max_length=10)
 
     openid = models.CharField(max_length=100, blank=True)
     session_id = models.CharField(max_length=100, blank=True)
